@@ -39,7 +39,7 @@ const slides: Slide[] = [
   },
 ];
 
-const INTERVAL = 5200;
+const INTERVAL = 2500; // ms que permanece cada foto
 const HIDDEN = "inset(100% 0% 0% 0%)";
 const SHOWN = "inset(0% 0% 0% 0%)";
 
