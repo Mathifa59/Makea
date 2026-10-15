@@ -32,10 +32,10 @@ export const site = {
   themeColor: "#fff7ec",
   brandColor: "#fa8d0a",
   contact: {
-    /** Número tal como aparece en el menú. */
-    phoneDisplay: "967 819 857",
+    /** Número que se muestra en la web. */
+    phoneDisplay: "933 881 667",
     /** Formato internacional sin "+" ni espacios para wa.me (51 = Perú). */
-    whatsapp: "51967819857",
+    whatsapp: "51933881667",
     instagram: "makea.pe",
     address: "Calle Puente y Cortes",
   },
