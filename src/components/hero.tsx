@@ -4,11 +4,11 @@ import { motion, useReducedMotion, useScroll, useTransform } from "motion/react"
 import { ArrowDown, ArrowRight } from "lucide-react";
 import { useRef } from "react";
 
-import heroImg from "@/assets/hero-pistacho.jpg";
 import torreImg from "@/assets/chocotejas-torre.jpg";
 import { whatsappLink } from "@/config/site";
 import { Button } from "./button";
 import { Blob, Drop, Stamp, WhatsappIcon } from "./decor";
+import { HeroCarousel } from "./hero-carousel";
 import { EASE, MaskedImage, SplitWords } from "./motion-primitives";
 
 export function Hero() {
@@ -137,15 +137,8 @@ export function Hero() {
               <Blob className="aspect-square w-full" />
             </motion.div>
 
-            <MaskedImage
-              src={heroImg}
-              alt="Tres leches de pistacho MAKEA en su envase kraft con el logo de la marca"
-              sizes="(min-width: 1024px) 30rem, 90vw"
+            <HeroCarousel
               className="aspect-[4/5] rounded-t-[999px] rounded-b-[2.5rem] shadow-[0_40px_80px_-40px_rgba(42,26,18,0.55)] ring-8 ring-crema"
-              position="50% 62%"
-              parallax={0}
-              onMount
-              preload
               delay={0.35}
             />
 
