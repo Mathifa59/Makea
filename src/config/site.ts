@@ -37,7 +37,6 @@ export const site = {
     /** Formato internacional sin "+" ni espacios para wa.me (51 = Perú). */
     whatsapp: "51933881667",
     instagram: "makea.pe",
-    address: "Calle Puente y Cortes",
   },
 } as const;
 

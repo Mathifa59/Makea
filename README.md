@@ -15,7 +15,7 @@ Abre http://localhost:3000.
 
 | Qué | Dónde |
 | --- | --- |
-| WhatsApp, Instagram, dirección, textos SEO | `src/config/site.ts` |
+| WhatsApp, Instagram, textos SEO | `src/config/site.ts` |
 | Catálogo (líneas, categorías y sabores) | `src/data/catalog.ts` |
 | Datos estructurados (schema.org) | `src/config/structured-data.ts` |
 

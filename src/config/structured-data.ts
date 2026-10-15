@@ -40,11 +40,8 @@ export function buildStructuredData() {
         logo: `${site.url}${logo.src}`,
         image: `${site.url}/opengraph-image.jpg`,
         telephone: `+${site.contact.whatsapp}`,
-        address: {
-          "@type": "PostalAddress",
-          streetAddress: site.contact.address,
-          addressCountry: "PE",
-        },
+        // Negocio 100 % online: sin dirección física, atiende en Perú.
+        areaServed: { "@type": "Country", name: "Perú" },
         servesCuisine: ["Postres", "Chocotejas"],
         hasMenu: menu,
         sameAs: instagram ? [instagram] : undefined,

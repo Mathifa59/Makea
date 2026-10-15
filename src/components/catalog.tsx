@@ -2,7 +2,6 @@
 
 import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
-import { MapPin } from "lucide-react";
 import { useRef, useState, type KeyboardEvent } from "react";
 
 import logoCrema from "@/assets/logo-crema.png";
@@ -199,12 +198,6 @@ export function Catalog() {
                     </a>
                   ) : null}
                 </div>
-                {site.contact.address ? (
-                  <p className="mt-8 inline-flex items-center gap-2 text-sm text-crema/70">
-                    <MapPin className="size-4 text-naranja" aria-hidden />
-                    {site.contact.address}
-                  </p>
-                ) : null}
               </div>
               <div className="hidden justify-end lg:col-span-4 lg:flex">
                 <Stamp id="stamp-cta" className="size-56 text-naranja" />
