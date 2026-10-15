@@ -62,9 +62,14 @@ export function HeroCarousel({ className = "", delay = 0 }: { className?: string
     [index],
   );
 
-  // Autoplay: lo marca la barra de progreso (animación CSS). Pausar la barra
-  // —hover, foco o pestaña oculta— pausa también el carrusel; sin autoplay con
-  // movimiento reducido.
+  // Autoplay: se detiene con hover/foco, pestaña oculta o movimiento reducido.
+  // La primera foto espera además a que termine la entrada del hero.
+  useEffect(() => {
+    if (reduce || paused) return;
+    const id = window.setTimeout(() => go(index + 1), INTERVAL + (tick === 0 ? 1800 : 0));
+    return () => window.clearTimeout(id);
+  }, [index, paused, reduce, tick, go]);
+
   useEffect(() => {
     const onVis = () => setPaused(document.hidden);
     document.addEventListener("visibilitychange", onVis);
@@ -139,9 +144,9 @@ export function HeroCarousel({ className = "", delay = 0 }: { className?: string
         />
       </motion.div>
 
-      {/* Etiqueta y controles */}
+      {/* Etiqueta de la categoría */}
       <div className="absolute bottom-5 right-5 z-10 flex flex-col items-end gap-3 sm:bottom-6 sm:right-6">
-        <div className="overflow-hidden" aria-live="polite">
+        <div className="overflow-hidden" aria-hidden>
           <motion.p
             key={slides[index].label}
             initial={{ y: "100%" }}
@@ -151,37 +156,6 @@ export function HeroCarousel({ className = "", delay = 0 }: { className?: string
           >
             {slides[index].label}
           </motion.p>
-        </div>
-        <div className="flex items-center gap-1.5 rounded-full bg-cacao/35 p-1.5 backdrop-blur-md">
-          {slides.map((s, i) => {
-            const isActive = i === index;
-            return (
-              <button
-                key={s.label}
-                type="button"
-                onClick={() => go(i)}
-                aria-label={`Ver foto ${i + 1} de ${slides.length}: ${s.label}`}
-                aria-current={isActive ? "true" : undefined}
-                className={`relative h-2 overflow-hidden rounded-full bg-crema/45 transition-[width] duration-500 ease-[var(--ease-editorial)] ${
-                  isActive ? "w-9" : "w-2 hover:bg-crema/80"
-                }`}
-              >
-                {isActive ? (
-                  <span
-                    key={tick}
-                    className="absolute inset-0 origin-left rounded-full bg-crema"
-                    style={{
-                      animation: reduce
-                        ? undefined
-                        : `carrusel-progreso ${INTERVAL + (tick === 0 ? 1800 : 0)}ms linear forwards`,
-                      animationPlayState: paused ? "paused" : "running",
-                    }}
-                    onAnimationEnd={() => go(index + 1)}
-                  />
-                ) : null}
-              </button>
-            );
-          })}
         </div>
       </div>
     </motion.div>
