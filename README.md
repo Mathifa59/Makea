@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MAKEA · Destapa la felicidad
 
-## Getting Started
+Landing page de MAKEA (chocotejas y postres cuchareables), hecha con Next.js, Tailwind CSS y Motion.
 
-First, run the development server:
+## Desarrollo
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abre http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Configuración
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Qué | Dónde |
+| --- | --- |
+| WhatsApp, Instagram, dirección, textos SEO | `src/config/site.ts` |
+| Catálogo (líneas, categorías y sabores) | `src/data/catalog.ts` |
+| Datos estructurados (schema.org) | `src/config/structured-data.ts` |
 
-## Learn More
+### Dominio del sitio (SEO)
 
-To learn more about Next.js, take a look at the following resources:
+La URL canónica, Open Graph, `sitemap.xml` y `robots.txt` usan, en este orden:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. `NEXT_PUBLIC_SITE_URL` (por ejemplo `https://makea.pe`), definida en el hosting.
+2. El dominio de producción de Vercel, si se despliega allí (automático).
+3. `http://localhost:3000` en local.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Cuando tengas el dominio definitivo, define `NEXT_PUBLIC_SITE_URL` en las variables de entorno del hosting y vuelve a desplegar.
 
-## Deploy on Vercel
+## SEO incluido
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Título, descripción, palabras clave y URL canónica (`src/app/layout.tsx`).
+- Imagen Open Graph / Twitter de 1200×630 (`src/app/opengraph-image.jpg`).
+- `sitemap.xml`, `robots.txt` y `manifest.webmanifest` (`src/app/*.ts`).
+- Favicon e icono de Apple con la "M" del logo.
+- JSON-LD `Bakery` + `WebSite` con la carta completa como `Menu`.

@@ -5,17 +5,9 @@ import { Footer } from "@/components/footer";
 import { Hero } from "@/components/hero";
 import { MotionProvider } from "@/components/motion-provider";
 import { Navbar } from "@/components/navbar";
-import { site } from "@/config/site";
+import { buildStructuredData } from "@/config/structured-data";
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Bakery",
-  name: site.name,
-  description: site.description,
-  telephone: `+${site.contact.whatsapp}`,
-  address: { "@type": "PostalAddress", streetAddress: site.contact.address },
-  sameAs: [`https://instagram.com/${site.contact.instagram}`],
-};
+const jsonLd = buildStructuredData();
 
 export default function Home() {
   return (
@@ -36,7 +28,7 @@ export default function Home() {
       <Footer />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
       />
     </MotionProvider>
   );
